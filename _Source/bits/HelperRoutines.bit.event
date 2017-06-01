@@ -1,0 +1,22 @@
+prGetItemROMStruct:
+{
+	rCallSequence(_prAndFF _prGetROMStructById)
+
+_prAndFF:
+	rAndConst(0xFF)
+
+_prGetROMStructById:
+	rCallOther(prGetItemIdROMStruct)
+}
+
+prCheckSubjectNotNull:
+{
+	rCallSequence(_prGetSubject _prAndMinusOne)
+
+_prGetSubject:
+	rWithSubject(rArgument)
+
+_prAndMinusOne: // The only way this returns 0 is in the case where Subject is 0
+	rAnd(rMinus(rConstant(1)))
+}
+

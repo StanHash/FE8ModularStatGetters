@@ -26,5 +26,27 @@ prCheckUnitsAllied:
 	SHORT 0xB500 0x7AC8 0x7AD1 0x4B02 0x469E 0xF800 0xBC02 0x4708 0x4D8C 0x0802
 prCheckUnitAllegience:
 	SHORT 0xB500 0x7AC8 0x1C11 0x4B02 0x469E 0xF800 0xBC02 0x4708 0x4DA4 0x0802
+prGetItemROMStruct:
+{
+	rCallSequence(_prAndFF _prGetROMStructById)
+
+_prAndFF:
+	rAndConst(0xFF)
+
+_prGetROMStructById:
+	rCallOther(prGetItemIdROMStruct)
+}
+
+prCheckSubjectNotNull:
+{
+	rCallSequence(_prGetSubject _prAndMinusOne)
+
+_prGetSubject:
+	rWithSubject(rArgument)
+
+_prAndMinusOne: // The only way this returns 0 is in the case where Subject is 0
+	rAnd(rMinus(rConstant(1)))
+}
+
 
 #endif // MSG_INSTALL_HELPER_EVENT

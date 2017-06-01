@@ -24,6 +24,11 @@ PUSH; ORG FreeSpace
 	#include "MSG/InstallCore.event"
 	#include "MSG/InstallHelpers.event"
 	
+	// Installing MSG Extentions
+		
+	// #include "MSGExt/SkillSystem.event"
+	// #include "MSGExt/PassiveItemStatBonuses.event"
+	
 	// Installing Each Individual Stat Getter
 	
 	#include "StatGetters/MaxHP.event"

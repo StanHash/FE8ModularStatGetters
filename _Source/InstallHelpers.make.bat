@@ -21,4 +21,6 @@ bin2ea --to-stdout -short "asm\helpers\checks\CheckUnitState.bin"      -label "p
 bin2ea --to-stdout -short "asm\helpers\checks\CheckUnitsAllied.bin"    -label "prCheckUnitsAllied"
 bin2ea --to-stdout -short "asm\helpers\checks\CheckUnitAllegience.bin" -label "prCheckUnitAllegience"
 
+type bits\HelperRoutines.bit.event
+
 call %~dp0bat\PrintEAFooter.bat MSG_INSTALL_HELPER_EVENT

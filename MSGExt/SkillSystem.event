@@ -5,8 +5,12 @@
 	ERROR _file_ should be assembled for FE8
 #endif // _FE8_
 
+#ifndef SKILLSYSTEM_SKILL_TESTER
+	#define SKILLSYSTEM_SKILL_TESTER SkillTester
+#endif
+
 MSG_prCheckUnitSkill: // Wraps SkillTester for MSG
-	rCallExternal(SkillTester)
+	rCallExternal(SKILLSYSTEM_SKILL_TESTER)
 
 #define rIfUnitHasSkill(aSkillId)            "rWithConstant(aSkillId); rIf(MSG_prCheckUnitSkill)"
 #define rIfUnitHasSkill(aSkillId, arNext)    "rIfUnitHasSkill(aSkillId); arNext"

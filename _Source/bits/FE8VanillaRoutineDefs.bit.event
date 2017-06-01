@@ -1,10 +1,12 @@
-#define prGetItemHPBonus  0x080163F0
-#define prGetItemPowBonus 0x08016420
-#define prGetItemSklBonus 0x08016450
-#define prGetItemSpdBonus 0x08016480
-#define prGetItemDefBonus 0x080164B0
-#define prGetItemResBonus 0x080164E0
-#define prGetItemLckBonus 0x08016510
+#define prGetItemIdROMStruct 0x080177B0
 
-#define prGetUnitEquipped 0x08016B28
+#define prGetItemHPBonus     0x080163F0
+#define prGetItemPowBonus    0x08016420
+#define prGetItemSklBonus    0x08016450
+#define prGetItemSpdBonus    0x08016480
+#define prGetItemDefBonus    0x080164B0
+#define prGetItemResBonus    0x080164E0
+#define prGetItemLckBonus    0x08016510
+
+#define prGetUnitEquipped  0x08016B28
 

@@ -67,6 +67,14 @@
 #define rForUnitEquipped         "rForResultOfExt(prGetUnitEquipped)"
 #define rForUnitEquipped(arNext) "rForResultOfExt(prGetUnitEquipped); arNext"
 
+#define rForItemROMStruct         "rForResultOfExt(prGetItemROMStruct)"
+#define rForItemROMStruct(arNext) "rForResultOfExt(prGetItemROMStruct); arNext"
+
+#define rIfSubjectIsNotNull            "rIf(prCheckSubjectNotNull)"
+#define rIfSubjectIsNotNull(arNext)    "rIfSubjectIsNotNull; arNext"
+#define rIfSubjectIsNull               "rIfNot(prCheckSubjectNotNull)"
+#define rIfSubjectIsNull(arNext)       "rIfSubjectIsNull; arNext"
+
 #define rIfUnitHasAttribute(aAttribute)            "rWithConstant(aAttribute); rIf(prCheckUnitAttribute)"
 #define rIfUnitHasAttribute(aAttribute, arNext)    "rIfUnitHasAttribute(aAttribute); arNext"
 #define rIfUnitHasNotAttribute(aAttribute)         "rWithConstant(aAttribute); rIfNot(prCheckUnitAttribute)"

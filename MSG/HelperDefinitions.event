@@ -10,15 +10,17 @@
 
 #include "CoreDefinitions.event"
 
-#define prGetItemHPBonus  0x080163F0
-#define prGetItemPowBonus 0x08016420
-#define prGetItemSklBonus 0x08016450
-#define prGetItemSpdBonus 0x08016480
-#define prGetItemDefBonus 0x080164B0
-#define prGetItemResBonus 0x080164E0
-#define prGetItemLckBonus 0x08016510
+#define prGetItemIdROMStruct 0x080177B0
 
-#define prGetUnitEquipped 0x08016B28
+#define prGetItemHPBonus     0x080163F0
+#define prGetItemPowBonus    0x08016420
+#define prGetItemSklBonus    0x08016450
+#define prGetItemSpdBonus    0x08016480
+#define prGetItemDefBonus    0x080164B0
+#define prGetItemResBonus    0x080164E0
+#define prGetItemLckBonus    0x08016510
+
+#define prGetUnitEquipped  0x08016B28
 
 #define rArgument "SHORT 0x1C10 0x4770"
 #define rCurrent "SHORT 0x4770 0x46C0"
@@ -130,6 +132,14 @@
 
 #define rForUnitEquipped         "rForResultOfExt(prGetUnitEquipped)"
 #define rForUnitEquipped(arNext) "rForResultOfExt(prGetUnitEquipped); arNext"
+
+#define rForItemROMStruct         "rForResultOfExt(prGetItemROMStruct)"
+#define rForItemROMStruct(arNext) "rForResultOfExt(prGetItemROMStruct); arNext"
+
+#define rIfSubjectIsNotNull            "rIf(prCheckSubjectNotNull)"
+#define rIfSubjectIsNotNull(arNext)    "rIfSubjectIsNotNull; arNext"
+#define rIfSubjectIsNull               "rIfNot(prCheckSubjectNotNull)"
+#define rIfSubjectIsNull(arNext)       "rIfSubjectIsNull; arNext"
 
 #define rIfUnitHasAttribute(aAttribute)            "rWithConstant(aAttribute); rIf(prCheckUnitAttribute)"
 #define rIfUnitHasAttribute(aAttribute, arNext)    "rIfUnitHasAttribute(aAttribute); arNext"
