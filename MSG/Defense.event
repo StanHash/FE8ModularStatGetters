@@ -1,0 +1,14 @@
+#ifndef MODULAR_GETTER_DEFENSE_EVENT
+#define MODULAR_GETTER_DEFENSE_EVENT
+
+pDefModifiers: // Defense
+	POIN prAddUnitDefense prAddEquipDefense
+WORD 0
+
+prAddUnitDefense: // Byte 0x17 in unit struct is Defense
+	rAdd(rSByteAt(0x17))
+
+prAddEquipDefense:
+	rAdd(rForUnitEquipped(rCallExternal(prGetItemDefBonus)))
+
+#endif // MODULAR_GETTER_DEFENSE_EVENT

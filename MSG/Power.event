@@ -1,0 +1,14 @@
+#ifndef MODULAR_GETTER_POWER_EVENT
+#define MODULAR_GETTER_POWER_EVENT
+
+pPowModifiers: // Power
+	POIN prAddUnitPower prAddEquipPower
+WORD 0
+
+prAddUnitPower: // Byte 0x14 in unit struct is Power
+	rAdd(rSByteAt(0x14))
+
+prAddEquipPower:
+	rAdd(rForUnitEquipped(rCallExternal(prGetItemPowBonus)))
+
+#endif // MODULAR_GETTER_POWER_EVENT

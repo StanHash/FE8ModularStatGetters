@@ -1,0 +1,22 @@
+#ifndef MODULAR_GETTER_CONSITUTION_EVENT
+#define MODULAR_GETTER_CONSITUTION_EVENT
+
+pConModifiers: // Consitition
+	POIN prAddUnitBaseCon prAddUnitConBonus
+WORD 0
+
+prAddUnitBaseCon:
+{
+	rCallSequence(_prAddClassCon _prAddCharConBonus)
+	
+_prAddClassCon: // word 0x04 in unit struct is ROM class data pointer, byte 0x11 in ROM char data is class consition
+	rAdd(rForWordAt(0x04, rSByteAt(0x11))) 
+
+_prAddCharConBonus: // word 0x00 in unit struct is ROM char data pointer, byte 0x13 in ROM char data is personal consition bonus
+	rAdd(rForWordAt(0x00, rSByteAt(0x13)))
+}
+
+prAddUnitConBonus: // Byte 0x1A in unit struct is Con Bonus
+	rAdd(rSByteAt(0x1A))
+
+#endif // MODULAR_GETTER_CONSITUTION_EVENT

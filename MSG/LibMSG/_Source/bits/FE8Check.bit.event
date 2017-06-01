@@ -1,0 +1,4 @@
+#ifndef _FE8_
+	ERROR _file_ should be assembled for FE8
+#endif // _FE8_
+

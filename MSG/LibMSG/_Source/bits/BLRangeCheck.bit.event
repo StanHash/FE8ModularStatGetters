@@ -1,0 +1,4 @@
+#ifndef inBLRange
+	ERROR _file_ is not in BL Range
+#endif
+

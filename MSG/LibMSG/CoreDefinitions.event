@@ -1,0 +1,21 @@
+#ifndef MSG_CORE_DEFINITIONS_EVENT
+#define MSG_CORE_DEFINITIONS_EVENT
+
+#include "eastdlib.event"
+#include "Extensions/Hack Installation.txt"
+
+#ifndef _FE8_
+	ERROR _file_ should be assembled for FE8
+#endif // _FE8_
+
+// Actually I don't seem to find anything that would fit here
+// So I guess I'll define the version number
+
+#define MSG_VERSION_MAJOR 2
+#define MSG_VERSION_MINOR 0
+#define MSG_VERSION_PATCH 0
+
+#define MSG_VERSION_STRING "MSG_VERSION_MAJOR.MSG_VERSION_MINOR.MSG_VERSION_PATCH"
+
+
+#endif // MSG_CORE_DEFINITIONS_EVENT

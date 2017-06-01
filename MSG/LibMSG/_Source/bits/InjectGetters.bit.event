@@ -1,0 +1,28 @@
+PUSH
+	ORG 0x19190
+		replaceWithHack(prMaxHPGetter)
+
+	ORG 0x19150
+		replaceWithHack(prCurHPGetter)
+
+	ORG 0x191B0
+		replaceWithHack(prPowGetter)
+
+	ORG 0x191D0
+		replaceWithHack(prSklGetter)
+
+	ORG 0x19210
+		replaceWithHack(prSpdGetter)
+
+	ORG 0x19250
+		replaceWithHack(prDefGetter)
+
+	ORG 0x19270
+		replaceWithHack(prResGetter)
+
+	ORG 0x19298
+		replaceWithHack(prLckGetter)
+
+	ORG 0x189B8
+		replaceWithHack(prAidGetter)
+POP

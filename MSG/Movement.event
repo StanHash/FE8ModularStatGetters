@@ -1,0 +1,17 @@
+#ifndef MODULAR_GETTER_MOVEMENT_EVENT
+#define MODULAR_GETTER_MOVEMENT_EVENT
+
+pMovModifiers: // Movement
+	POIN prAddUnitBaseMov prAddUnitMovBonus prNullifyIfGuardAI
+WORD 0
+
+prAddUnitBaseMov: // word 0x04 in unit struct is ROM class data pointer, byte 0x12 in ROM char data is class movement
+	rAdd(rForWordAt(0x04, rSByteAt(0x12))) 
+
+prAddUnitMovBonus: // Byte 0x1D in unit struct is Mov Bonus
+	rAdd(rSByteAt(0x1D))
+
+prNullifyIfGuardAI:
+	rIfUnitHasGuardAI(rConstant(0))
+
+#endif // MODULAR_GETTER_MOVEMENT_EVENT

@@ -1,0 +1,85 @@
+#define rForWordAt(aOffset, arNext)  "rForWordAt(aOffset);  arNext"
+#define rForShortAt(aOffset, arNext) "rForShortAt(aOffset); arNext"
+#define rForByteAt(aOffset, arNext)  "rForByteAt(aOffset);  arNext"
+#define rForConstant(aValue, arNext) "rForConstant(aValue); arNext"
+#define rForArgument(arNext)         "rForArgument;         arNext"
+
+#define rForResultOf(aprRoutine, arNext)    "rForResultOf(aprRoutine);    arNext"
+#define rForResultOfExt(aprRoutine, arNext) "rForResultOfExt(aprRoutine); arNext"
+
+#define rWithWordAt(aOffset, arNext)   "rWithWordAt(aOffset);   arNext"
+#define rWithUShortAt(aOffset, arNext) "rWithUShortAt(aOffset); arNext"
+#define rWithSShortAt(aOffset, arNext) "rWithSShortAt(aOffset); arNext"
+#define rWithUByteAt(aOffset, arNext)  "rWithUByteAt(aOffset);  arNext"
+#define rWithSByteAt(aOffset, arNext)  "rWithSByteAt(aOffset);  arNext"
+#define rWithConstant(aValue, arNext)  "rWithConstant(aValue);  arNext"
+#define rWithSubject(arNext)           "rWithSubject;           arNext"
+
+#define rWithResultOf(aprRoutine, arNext)    "rWithResultOf(aprRoutine);    arNext"
+#define rWithResultOfExt(aprRoutine, arNext) "rWithResultOfExt(aprRoutine); arNext"
+
+#define rWordAt(aOffset)   "rWithWordAt(aOffset);   rArgument"
+#define rUShortAt(aOffset) "rWithUShortAt(aOffset); rArgument"
+#define rSShortAt(aOffset) "rWithSShortAt(aOffset); rArgument"
+#define rUByteAt(aOffset)  "rWithUByteAt(aOffset);  rArgument"
+#define rSByteAt(aOffset)  "rWithSByteAt(aOffset);  rArgument"
+#define rConstant(aOffset) "rWithConstant(aOffset); rArgument"
+
+#define rCallResultOf(arNext)         "rCallResultOf;         arNext"
+#define rCallExternalResultOf(arNext) "rCallExternalResultOf; arNext"
+
+#define rIf(aprCondition, arNext)    "rIf(aprCondition);    arNext"
+#define rIfNot(aprCondition, arNext) "rIfNot(aprCondition); arNext"
+
+#define rWhile(aprCondition, arNext)    "rWhile(aprCondition);    arNext"
+#define rWhileNot(aprCondition, arNext) "rWhileNot(aprCondition); arNext"
+
+#define rAdd(arNext)    "rAdd;    arNext"
+#define rSub(arNext)    "rSub;    arNext"
+#define rLShift(arNext) "rLShift; arNext"
+#define rRShift(arNext) "rRShift; arNext"
+#define rMul(arNext)    "rMul;    arNext"
+#define rAnd(arNext)    "rAnd;    arNext"
+#define rOr(arNext)     "rOr;     arNext"
+#define rXOr(arNext)    "rXOr;    arNext"
+
+#define rNot(arNext)    "rNot;    arNext"
+#define rMinus(arNext)  "rMinus;  arNext"
+
+#define rUpperHalfByteOf(arNext) "rUpperHalfByteOf; arNext"
+#define rLowerHalfByteOf(arNext) "rLowerHalfByteOf; arNext"
+
+#define rAddConst(aValue)    "rAdd;    rConstant(aValue)"
+#define rSubConst(aValue)    "rSub;    rConstant(aValue)"
+#define rLShiftConst(aValue) "rLShift; rConstant(aValue)"
+#define rRShiftConst(aValue) "rRShift; rConstant(aValue)"
+#define rMulConst(aValue)    "rMul;    rConstant(aValue)"
+#define rAndConst(aValue)    "rAnd;    rConstant(aValue)"
+#define rOrConst(aValue)     "rOr;     rConstant(aValue)"
+#define rXOrConst(aValue)    "rXOr;    rConstant(aValue)"
+
+#define rHalved  "rRShiftConst(1)"
+#define rDoubled "rLShiftConst(1)"
+
+#define rForUnitEquipped         "rForResultOfExt(prGetUnitEquipped)"
+#define rForUnitEquipped(arNext) "rForResultOfExt(prGetUnitEquipped); arNext"
+
+#define rIfUnitHasAttribute(aAttribute)            "rWithConstant(aAttribute); rIf(prCheckUnitAttribute)"
+#define rIfUnitHasAttribute(aAttribute, arNext)    "rIfUnitHasAttribute(aAttribute); arNext"
+#define rIfUnitHasNotAttribute(aAttribute)         "rWithConstant(aAttribute); rIfNot(prCheckUnitAttribute)"
+#define rIfUnitHasNotAttribute(aAttribute, arNext) "rIfUnitHasNotAttribute(aAttribute); arNext"
+
+#define rIfUnitHasGuardAI            "rIf(prCheckUnitGuardAI)"
+#define rIfUnitHasGuardAI(arNext)    "rIfUnitHasGuardAI;    arNext"
+#define rIfUnitHasNotGuardAI         "rIfNot(prCheckUnitGuardAI)"
+#define rIfUnitHasNotGuardAI(arNext) "rIfUnitHasNotGuardAI; arNext"
+
+#define rIfUnitHasStatus(aStatusId)            "rWithConstant(aStatusId); rIf(prCheckUnitStatus)"
+#define rIfUnitHasStatus(aStatusId, arNext)    "rIfUnitHasStatus(aStatusId); arNext"
+#define rIfUnitHasNotStatus(aStatusId)         "rWithConstant(aStatusId); rIfNot(prCheckUnitStatus)"
+#define rIfUnitHasNotStatus(aStatusId, arNext) "rIfUnitHasNotStatus(aStatusId); arNext"
+
+#define rIfUnitHasState(aState)            "rWithConstant(aState); rIf(prCheckUnitState)"
+#define rIfUnitHasState(aState, arNext)    "rIfUnitHasState(aState); arNext"
+#define rIfUnitHasNotState(aState)         "rWithConstant(aState); rIfNot(prCheckUnitState)"
+#define rIfUnitHasNotState(aState, arNext) "rIfUnitHasNotState(aState); arNext"

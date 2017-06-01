@@ -1,0 +1,21 @@
+#ifndef ENGINEHAX_NEGATIVE_DISPLAY_EVENT
+#define ENGINEHAX_NEGATIVE_DISPLAY_EVENT
+
+{
+#ifdef inBLRange
+	PUSH
+		//Negative Wt/Crit Display
+		
+		ORG $4146
+			BL(NegDisplay)
+	POP
+
+	ALIGN 4
+	NegDisplay:
+		#incbin "_ASM/NegativeDisplay.bin"
+#else
+	ERROR _file_ is not in BL Range
+#endif
+}
+
+#endif // ENGINEHAX_NEGATIVE_DISPLAY_EVENT
