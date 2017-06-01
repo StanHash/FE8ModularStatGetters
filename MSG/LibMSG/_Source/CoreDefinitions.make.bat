@@ -4,16 +4,15 @@ call %~dp0bat\PrintEAHeader.bat MSG_CORE_DEFINITIONS_EVENT
 
 type bits\FE8Check.bit.event
 
-echo // Actually I don't seem to find anything that would fit here
-echo // So I guess I'll define the version number
-echo:
+bin2ea --to-stdout -short "asm\core\ModifyBCAttack.bin"    -define "rModifyBCAttack"
+bin2ea --to-stdout -short "asm\core\ModifyBCDefense.bin"   -define "rModifyBCDefense"
+bin2ea --to-stdout -short "asm\core\ModifyBCAS.bin"        -define "rModifyBCAS"
+bin2ea --to-stdout -short "asm\core\ModifyBCHit.bin"       -define "rModifyBCHit"
+bin2ea --to-stdout -short "asm\core\ModifyBCAvoid.bin"     -define "rModifyBCAvoid"
+bin2ea --to-stdout -short "asm\core\ModifyBCCrit.bin"      -define "rModifyBCCrit"
+bin2ea --to-stdout -short "asm\core\ModifyBCDodge.bin"     -define "rModifyBCDodge"
+bin2ea --to-stdout -short "asm\core\ModifyBCLethality.bin" -define "rModifyBCLethality"
 
-echo #define MSG_VERSION_MAJOR 2
-echo #define MSG_VERSION_MINOR 0
-echo #define MSG_VERSION_PATCH 0
-echo:
-
-echo #define MSG_VERSION_STRING "MSG_VERSION_MAJOR.MSG_VERSION_MINOR.MSG_VERSION_PATCH"
-echo:
+type bits\CoreHelpers.bit.event
 
 call %~dp0bat\PrintEAFooter.bat MSG_CORE_DEFINITIONS_EVENT

@@ -1,0 +1,9 @@
+#define rModifyBCAttack(arNext)    "rModifyBCAttack; arNext"
+#define rModifyBCDefense(arNext)   "rModifyBCDefense; arNext"
+#define rModifyBCAS(arNext)        "rModifyBCAS; arNext"
+#define rModifyBCHit(arNext)       "rModifyBCHit; arNext"
+#define rModifyBCAvoid(arNext)     "rModifyBCAvoid; arNext"
+#define rModifyBCCrit(arNext)      "rModifyBCCrit; arNext"
+#define rModifyBCDodge(arNext)     "rModifyBCDodge; arNext"
+#define rModifyBCLethality(arNext) "rModifyBCLethality; arNext"
+

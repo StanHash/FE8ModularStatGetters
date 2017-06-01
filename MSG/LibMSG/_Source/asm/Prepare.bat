@@ -1,5 +1,37 @@
 @echo off
 
+rem Generating ModifyBCAttack
+copy "core\ModifyBCStat.s.template" "core\ModifyBCAttack.s"
+fart "core\ModifyBCAttack.s" _STATOFFSET 0x5A
+
+rem Generating ModifyBCDefense
+copy "core\ModifyBCStat.s.template" "core\ModifyBCDefense.s"
+fart "core\ModifyBCDefense.s" _STATOFFSET 0x5C
+
+rem Generating ModifyBCAS
+copy "core\ModifyBCStat.s.template" "core\ModifyBCAS.s"
+fart "core\ModifyBCAS.s" _STATOFFSET 0x5E
+
+rem Generating ModifyBCHit
+copy "core\ModifyBCStat.s.template" "core\ModifyBCHit.s"
+fart "core\ModifyBCHit.s" _STATOFFSET 0x60
+
+rem Generating ModifyBCAvoid
+copy "core\ModifyBCStat.s.template" "core\ModifyBCAvoid.s"
+fart "core\ModifyBCAvoid.s" _STATOFFSET 0x62
+
+rem Generating ModifyBCCrit
+copy "core\ModifyBCStat.s.template" "core\ModifyBCCrit.s"
+fart "core\ModifyBCCrit.s" _STATOFFSET 0x66
+
+rem Generating ModifyBCDodge
+copy "core\ModifyBCStat.s.template" "core\ModifyBCDodge.s"
+fart "core\ModifyBCDodge.s" _STATOFFSET 0x68
+
+rem Generating ModifyBCLethality
+copy "core\ModifyBCStat.s.template" "core\ModifyBCLethality.s"
+fart "core\ModifyBCLethality.s" _STATOFFSET 0x6C
+
 rem Generating ForWord
 copy "helpers\load\template\Word.s.template" "helpers\load\ForWord.s"
 fart "helpers\load\ForWord.s" _RD r1

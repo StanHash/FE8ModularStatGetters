@@ -32,6 +32,10 @@ bin2ea --to-stdout -short "asm\helpers\calls\WithResultOf.bin"         -define "
 bin2ea --to-stdout -short "asm\helpers\calls\WithResultOfExt.bin"      -define "rWithResultOfExt(aprRoutine)"       -after "POIN aprRoutine"
 bin2ea --to-stdout -short "asm\helpers\WithSubject.bin"                -define "rWithSubject"
 
+rem Loops
+bin2ea --to-stdout -short "asm\helpers\ForEachUnitInRange.bin"         -define "rForEachUnitInRange(aMinR, aMaxR)"  -before "rWithConstant(aMinR | (aMaxR<<16))"
+bin2ea --to-stdout -short "asm\helpers\ForEachUnitItem.bin"            -define "rForEachUnitItem"
+
 rem Calls
 bin2ea --to-stdout -short "asm\helpers\calls\CallOther.bin"            -define "rCallOther(aprRoutine)"             -after "POIN aprRoutine"
 bin2ea --to-stdout -short "asm\helpers\calls\CallExternal.bin"         -define "rCallExternal(aprRoutine)"          -after "POIN aprRoutine"

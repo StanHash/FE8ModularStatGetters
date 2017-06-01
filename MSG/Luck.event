@@ -2,7 +2,7 @@
 #define MODULAR_GETTER_LUCK_EVENT
 
 pLckModifiers: // Luck
-	POIN prAddUnitLuck prAddEquipLuck prAdd10BecauseLolTest
+	POIN prAddUnitLuck prAddEquipLuck
 WORD 0
 
 prAddUnitLuck: // Byte 0x19 in unit struct is Luck
@@ -10,8 +10,5 @@ prAddUnitLuck: // Byte 0x19 in unit struct is Luck
 
 prAddEquipLuck:
 	rAdd(rForUnitEquipped(rCallExternal(prGetItemLckBonus)))
-
-prAdd10BecauseLolTest:
-	rAddConst(10)
 
 #endif // MODULAR_GETTER_LUCK_EVENT

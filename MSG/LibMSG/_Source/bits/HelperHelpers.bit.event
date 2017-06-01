@@ -7,6 +7,9 @@
 #define rForResultOf(aprRoutine, arNext)    "rForResultOf(aprRoutine);    arNext"
 #define rForResultOfExt(aprRoutine, arNext) "rForResultOfExt(aprRoutine); arNext"
 
+#define rForEachUnitInRange(aRangeMin, aRangeMax, arNext) "rForEachUnitInRange(aRangeMin, aRangeMax); arNext"
+#define rForEachUnitItem(arNext)                          "rForEachUnitItem; arNext"
+
 #define rWithWordAt(aOffset, arNext)   "rWithWordAt(aOffset);   arNext"
 #define rWithUShortAt(aOffset, arNext) "rWithUShortAt(aOffset); arNext"
 #define rWithSShortAt(aOffset, arNext) "rWithSShortAt(aOffset); arNext"
@@ -80,6 +83,16 @@
 #define rIfUnitHasNotStatus(aStatusId, arNext) "rIfUnitHasNotStatus(aStatusId); arNext"
 
 #define rIfUnitHasState(aState)            "rWithConstant(aState); rIf(prCheckUnitState)"
-#define rIfUnitHasState(aState, arNext)    "rIfUnitHasState(aState); arNext"
+#define rIfUnitHasState(aState, arNext)    "rIfUnitHasState(aState);    arNext"
 #define rIfUnitHasNotState(aState)         "rWithConstant(aState); rIfNot(prCheckUnitState)"
 #define rIfUnitHasNotState(aState, arNext) "rIfUnitHasNotState(aState); arNext"
+
+#define rIfUnitsAreAllied            "rIf(prCheckUnitsAllied)"
+#define rIfUnitsAreAllied(arNext)    "rIfUnitsAreAllied;    arNext"
+#define rIfUnitsAreNotAllied         "rIfNot(prCheckUnitsAllied)"
+#define rIfUnitsAreNotAllied(arNext) "rIfUnitsAreNotAllied; arNext"
+
+#define rIfUnitHasAllegience(aAllegience)            "rWithConstant(aAllegience); rIf(prCheckUnitAllegience)"
+#define rIfUnitHasAllegience(aAllegience, arNext)    "rIfUnitHasAllegience(aAllegience);    arNext"
+#define rIfUnitHasNotAllegience(aAllegience)         "rWithConstant(aAllegience); rIfNot(prCheckUnitAllegience)"
+#define rIfUnitHasNotAllegience(aAllegience, arNext) "rIfUnitHasNotAllegience(aAllegience); arNext"
