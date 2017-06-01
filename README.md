@@ -15,3 +15,8 @@ Supported Stats:
 Actually no, I'm lazy. Instead I'll open a thread on [FEU](http://feuniverse.us/) where I'll ask for stupid stat changing mechanics and post ways of implementing it with MSG, and hopefully it will provide example enough?
 
 There is a doc out there, but there is a problem with, your honor. ***It is outdated.***
+
+## Use it!
+Take folders `MSG`, `MSGExt` and you probably want `StatGetters` aswell. Put those somewhere in your buildfile project, along with a file that should work the same way as `_Example.event` (that is: include `MSG/InstallCore.event`, `MSG/InstallHelpers.event` and the different stat getter definitions somewhere in free space, while including `MSG/InstallCore_BLRange.event` whithin BL Range).
+
+**[For more information on how to use the buildfile method to build a GBAFE hack, check this guide.](https://stackedit.io/viewer#!provider=gist&gistId=084645b0690253600f4aa2a57b76a105&filename=feutv2)**
