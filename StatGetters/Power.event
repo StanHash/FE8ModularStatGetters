@@ -1,0 +1,16 @@
+#ifndef MODULAR_GETTER_POWER_EVENT
+#define MODULAR_GETTER_POWER_EVENT
+
+#include "_Common.event"
+
+pPowModifiers: // Power
+	POIN prAddUnitPower prAddEquipPower
+WORD 0
+
+prAddUnitPower:
+	rAdd(rSByteAt(UNIT_POWER))
+
+prAddEquipPower:
+	rAdd(rForUnitEquipped(rCallExternal(prGetItemPowBonus)))
+
+#endif // MODULAR_GETTER_POWER_EVENT

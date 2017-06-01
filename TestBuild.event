@@ -1,3 +1,0 @@
-#include "MSG/_StatGetters.event"
-
-#include "_Testing/NegativeStatBoosts.event"

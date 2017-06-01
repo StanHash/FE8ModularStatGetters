@@ -1,0 +1,42 @@
+#ifndef EXAMPLE_EVENT
+#define EXAMPLE_EVENT
+
+// Defining Free Space
+#define FreeSpace        0xB2B000
+#define FreeSpaceBLRange 0x1C1EC0
+
+PUSH; ORG FreeSpaceBLRange
+	#define inBLRange
+	
+	// Installing MSG components that are needed to be in BL Range
+	
+	ALIGN 4
+	#include "MSG/InstallCore_BLRange.event"
+
+	#undef inBLRange
+POP
+
+PUSH; ORG FreeSpace
+	
+	// Installing MSG components
+	
+	ALIGN 4
+	#include "MSG/InstallCore.event"
+	#include "MSG/InstallHelpers.event"
+	
+	// Installing Each Individual Stat Getter
+	
+	#include "StatGetters/MaxHP.event"
+	#include "StatGetters/CurHP.event"
+	#include "StatGetters/Power.event"
+	#include "StatGetters/Skill.event"
+	#include "StatGetters/Speed.event"
+	#include "StatGetters/Defense.event"
+	#include "StatGetters/Resistance.event"
+	#include "StatGetters/Luck.event"
+	#include "StatGetters/Constitution.event"
+	#include "StatGetters/Movement.event"
+	#include "StatGetters/Aid.event"
+POP
+
+#endif // EXAMPLE_EVENT

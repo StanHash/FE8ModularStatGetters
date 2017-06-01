@@ -1,0 +1,25 @@
+#ifndef MSG_INSTALL_CORE_BLRANGE_EVENT
+#define MSG_INSTALL_CORE_BLRANGE_EVENT
+
+#include "eastdlib.event"
+#include "Extensions/Hack Installation.txt"
+
+#ifndef _FE8_
+	ERROR _file_ should be assembled for FE8
+#endif // _FE8_
+
+#ifndef inBLRange
+	ERROR _file_ is not in BL Range
+#endif
+
+#include "CoreDefinitions.event"
+
+#include "3rdParty/InjectMovGetters.event"
+#include "3rdParty/InjectConGetters.event"
+
+ALIGN 4
+
+prGotoMovGetter: replaceWithHack(prMovGetter)
+prGotoConGetter: replaceWithHack(prConGetter)
+
+#endif // MSG_INSTALL_CORE_BLRANGE_EVENT

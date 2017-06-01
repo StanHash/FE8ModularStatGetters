@@ -1,0 +1,16 @@
+#ifndef MODULAR_GETTER_SKILL_EVENT
+#define MODULAR_GETTER_SKILL_EVENT
+
+#include "_Common.event"
+
+pSklModifiers: // Skill
+	POIN prAddUnitSkill prHalveIfRescuing prAddEquipSkill
+WORD 0
+
+prAddUnitSkill:
+	rAdd(rSByteAt(UNIT_SKILL))
+
+prAddEquipSkill:
+	rAdd(rForUnitEquipped(rCallExternal(prGetItemSklBonus)))
+
+#endif // MODULAR_GETTER_SKILL_EVENT
