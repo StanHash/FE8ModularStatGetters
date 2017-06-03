@@ -8,12 +8,12 @@
 .endm
 
 .macro get_pair_first rd, rs
-	lsl \rd, \rs, #16
-	asr \rd, \rd, #16
+	lsl \rd, \rs, #16 @ clearing second part of pair
+	asr \rd, \rd, #16 @ shifting back
 .endm
 
 .macro get_pair_second rd, rs
-	asr \rd, \rs, #16
+	asr \rd, \rs, #16 @ shifting second part of pair (erasing first part in the process)
 .endm
 
 .macro _maxZero reg, oreg=r3
@@ -340,7 +340,7 @@ ContinueXLoop:
 	
 StartXLoop:
 	sub r2, #1 @ decrement counter
-	bne ContinueXLoop
+	bge ContinueXLoop
 	
 	get_pair_second r0, r6 @ r0 = sizePair.second
 	add r8, r0 @ tIt = tIt + sizePair.second

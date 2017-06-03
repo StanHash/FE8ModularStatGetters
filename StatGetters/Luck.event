@@ -22,7 +22,7 @@ prAddTest:
 pTestShape:
 	// Header
 	BYTE 5 5 // Size
-	BYTE 3 3 // Origin (Where the Unit would be)
+	BYTE 2 2 // Origin (Where the Unit would be)
 
 	// Data
 	BYTE 0 1 1 1 0

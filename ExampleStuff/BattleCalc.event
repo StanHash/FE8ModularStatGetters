@@ -25,20 +25,19 @@ prBattleCalcLoop:
 
 // hook into your battle calc loop
 prAddExtraSupportLikeBonusesIfUnitWithThatSkillIsInRange:
-	rWrapForBattleCalc // Shifts registers around accordingly
+	rWrapForBattleCalc // Shifts registers around accordingly, Value is now a blank *BC Compound*
 		rIf(prCheckForUnitsWithSkillInRange) // I assume you want a skill, but it can be a lot of other things (like hardcoded char id)
 			rForEachUnitInRange(0, 3) // 1-3 range, default support range
 				rIfUnitsAreAllied
-					rBCAddUnitsSupportBonuses(1)
+					rBCCAddUnitsSupportBonuses(1)
 
 // For Each allied unit in the area, it will or the result of the skill check to the value
 // Which means that if there is someone with the skill in the area, the result will be non null.
 prCheckForUnitsWithSkillInRange:
 	rLetValueBeNull // Allows us to not need to use some ugly rCallSequence trick to set the value to zero
-		MESSAGE CURRENTOFFSET
 		rForEachUnitInRangeTemplate(pTheWanShape)
 			rIfUnitsAreAllied
-				rOr(rConstant(1))//(rWithConstant(/* Skill ID */, rCallOther(prCheckUnitHasSkill)))
+				rOr(rWithConstant(/* Skill ID */, rCallOther(prCheckUnitHasSkill)))
 
 // Defining Range Shape
 pTheWanShape:
