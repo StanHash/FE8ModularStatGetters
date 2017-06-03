@@ -14,6 +14,9 @@ bin2ea --to-stdout -short "asm\core\ModifyBCDodge.bin"     -define "rModifyBCDod
 bin2ea --to-stdout -short "asm\core\ModifyBCLethality.bin" -define "rModifyBCLethality"
 echo:
 
+bin2ea --to-stdout -short "asm\core\WrapForBattleCalc.bin" -define "rWrapForBattleCalc"
+echo:
+
 type bits\CoreHelpers.bit.event
 
 call %~dp0bat\PrintEAFooter.bat MSG_CORE_DEFINITIONS_EVENT

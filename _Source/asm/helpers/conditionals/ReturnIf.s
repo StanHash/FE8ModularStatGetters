@@ -4,7 +4,7 @@
 .equ Continue,         EALiterals+0x04
 
 ReturnIf:
-	push {r4-r5, lr}
+	push {r4-r6, lr}
 	
 	@ Preparing thumb bit in lr
 	mov r4, #1
@@ -17,6 +17,7 @@ ReturnIf:
 	@ Storing parameters
 	mov r4, r0
 	mov r5, r1
+	mov r6, r2
 	
 	@ lr = pc + 2op + 1
 	add lr, pc
@@ -33,10 +34,11 @@ ReturnIf:
 	bne End
 	
 	mov r1, r5
+	mov r2, r6
 	bl Continue
 	
 End:
-	pop {r4-r5}
+	pop {r4-r6}
 	
 	pop {r3}
 	bx r3

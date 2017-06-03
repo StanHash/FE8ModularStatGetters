@@ -7,7 +7,8 @@
 .endm
 
 .equ RangeMapFillerRoutine, EALiterals+0x00
-.equ Continue,              EALiterals+0x04
+.equ RangeTemplateMap,      EALiterals+0x04
+.equ Continue,              EALiterals+0x08
 
 .equ FE8U_ClearMap,         0x080197E4
 .equ FE8U_GetUnitStructPtr, 0x08019430
@@ -21,18 +22,8 @@ ForEachUnitInRange:
 	
 	mov r6, r0 @ r6 is current stat
 	mov r7, r1 @ r7 is unit ptr
-	mov r5, r2 @ r5 is range word
 	
 	bl ClearRangeMap
-	
-	@ Unpacking Min-Max ranges (in r2 and r3)
-	mov r1, #0xFF
-	
-	lsr r2, r5, #0
-	and r2, r1 @ r2 = min range
-	
-	lsr r3, r5, #16
-	and r3, r1 @ r3 = max range
 	
 	@ r0 = unit x
 	mov r0, #0x10
@@ -42,8 +33,10 @@ ForEachUnitInRange:
 	mov r1, #0x11
 	ldsb r1, [r7, r1]
 	
-	ldr r4, RangeMapFillerRoutine
-	mov lr, r4
+	ldr r2, RangeTemplateMap
+	
+	ldr r3, RangeMapFillerRoutine
+	mov lr, r3
 	.short 0xF800
 	
 	ldr r0, =FE8U_MapSizeStruct
@@ -135,4 +128,5 @@ ClearRangeMap:
 
 EALiterals:
 	@ POIN RangeMapFillerRoutine
+	@ POIN RangeTemplateMap
 	@ Next

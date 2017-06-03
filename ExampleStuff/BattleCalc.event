@@ -1,0 +1,59 @@
+#ifndef BCLE
+#define BCLE
+
+#include "Extensions/Hack Installation.txt"
+#include "eastdlib.event"
+
+PUSH; ORG 0x2A95C
+	replaceWithHack(prBattleCalcLoop)
+POP
+
+#define prBCDefRes  0x2AA44
+#define prBCPower   0x2AABC
+#define prBCASpd    0x2AB74
+#define prBCHit     0x2ABAC
+#define prBCAvo     0x2ABE4
+#define prBCCrit    0x2AC18
+#define prBCDodge   0x2AC54
+#define prBCSupport 0x2A9D0
+#define prBCWRank   0x2AD54
+#define prBCStatus  0x2AD90
+
+prBattleCalcLoop:
+	#incbin "FE8CalcLoop.bin"
+	POIN prBCDefRes prBCPower prBCASpd prBCHit prBCAvo prBCCrit prBCDodge prBCSupport prBCWRank prBCStatus prAddExtraSupportLikeBonusesIfUnitWithThatSkillIsInRange; WORD 0
+
+// hook into your battle calc loop
+prAddExtraSupportLikeBonusesIfUnitWithThatSkillIsInRange:
+	rWrapForBattleCalc // Shifts registers around accordingly
+		rIf(prCheckForUnitsWithSkillInRange) // I assume you want a skill, but it can be a lot of other things (like hardcoded char id)
+			rForEachUnitInRange(0, 3) // 1-3 range, default support range
+				rIfUnitsAreAllied
+					rBCAddUnitsSupportBonuses(1)
+
+// For Each allied unit in the area, it will or the result of the skill check to the value
+// Which means that if there is someone with the skill in the area, the result will be non null.
+prCheckForUnitsWithSkillInRange:
+	rLetValueBeNull // Allows us to not need to use some ugly rCallSequence trick to set the value to zero
+		MESSAGE CURRENTOFFSET
+		rForEachUnitInRangeTemplate(pTheWanShape)
+			rIfUnitsAreAllied
+				rOr(rConstant(1))//(rWithConstant(/* Skill ID */, rCallOther(prCheckUnitHasSkill)))
+
+// Defining Range Shape
+pTheWanShape:
+	// Header
+	BYTE 5 5 // Size
+	BYTE 3 3 // Origin (Where the Unit would be)
+
+	// Data
+	BYTE 0 1 1 1 0
+	BYTE 1 0 1 0 1
+	BYTE 1 1 0 1 1
+	BYTE 1 0 1 0 1
+	BYTE 0 1 1 1 0
+	
+	// For good measure
+	ALIGN 4
+
+#endif // BCLE

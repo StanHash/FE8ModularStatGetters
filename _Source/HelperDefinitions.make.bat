@@ -32,8 +32,12 @@ bin2ea --to-stdout -short "asm\helpers\calls\WithResultOf.bin"         -define "
 bin2ea --to-stdout -short "asm\helpers\calls\WithResultOfExt.bin"      -define "rWithResultOfExt(aprRoutine)"       -after "POIN aprRoutine"
 bin2ea --to-stdout -short "asm\helpers\WithSubject.bin"                -define "rWithSubject"
 
+rem Nullvalue
+bin2ea --to-stdout -short "asm\helpers\LetValueBeNull.bin"             -define "rLetValueBeNull"
+
 rem Loops
-bin2ea --to-stdout -short "asm\helpers\ForEachUnitInRange.bin"         -define "rForEachUnitInRange(aMinR, aMaxR)"  -before "rWithConstant(aMinR | (aMaxR<<16))"
+bin2ea --to-stdout -short "asm\helpers\ForEachUnitInRange.bin"         -define "rForEachUnitInRange(aMinR, aMaxR)"   -before "rWithConstant(aMinR | (aMaxR<<16))" -after "POIN prFillRangeFromRange"
+bin2ea --to-stdout -short "asm\helpers\ForEachUnitInRangeTemplate.bin" -define "rForEachUnitInRangeTemplate(apTmpl)" -after "POIN prFillRangeFromTemplate apTmpl"
 bin2ea --to-stdout -short "asm\helpers\ForEachUnitItem.bin"            -define "rForEachUnitItem"
 
 rem Calls
@@ -64,6 +68,9 @@ bin2ea --to-stdout -short "asm\helpers\math\Minus.bin"                 -define "
 
 bin2ea --to-stdout -short "asm\helpers\math\UpperHalfByteOf.bin"       -define "rUpperHalfByteOf"
 bin2ea --to-stdout -short "asm\helpers\math\LowerHalfByteOf.bin"       -define "rLowerHalfByteOf"
+
+rem BC Stuff
+bin2ea --to-stdout -short "asm\helpers\battlecalc\BCAddUnitsSupportBonuses.bin" -define "rBCAddUnitsSupportBonuses(aSupportLevel)" -after "WORD aSupportLevel"
 
 echo:
 

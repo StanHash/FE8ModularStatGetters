@@ -21,6 +21,8 @@
 #define rWithResultOf(aprRoutine, arNext)    "rWithResultOf(aprRoutine);    arNext"
 #define rWithResultOfExt(aprRoutine, arNext) "rWithResultOfExt(aprRoutine); arNext"
 
+#define rLetValueBeNull(arNext) "rLetValueBeNull; arNext"
+
 #define rWordAt(aOffset)   "rWithWordAt(aOffset);   rArgument"
 #define rUShortAt(aOffset) "rWithUShortAt(aOffset); rArgument"
 #define rSShortAt(aOffset) "rWithSShortAt(aOffset); rArgument"
