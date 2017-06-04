@@ -10,4 +10,6 @@ cd %~dp0
 cd "%~dp0_EventAssembler"
 (Core A FE8 "-output:%~dp0%OutROMFile%" "-input:%~dp0%SourceEventFile%") > nul
 
+cd %~dp0
+
 pause

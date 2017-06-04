@@ -1,0 +1,71 @@
+
+// Hook into Battle Calc Loop
+prBCSkillCharisma:
+{
+	rBCWrapper // Value is now a "Battle Stat Compound"
+		rForEachUnitInRange(0, 3) // 1-3 range (0-3 with 0 exclusive)
+			rIfUnitsAreAllied
+				rIfUnitHasSkill(SKILL_CHARISMA) // SKILL_CHARISMA is the skill id
+					rCallSequence(_prAdd10Hit _prAdd10Avo)
+
+_prAdd10Hit:
+	rBSCModifyHit // Value is now the "Hit" part of the Battle Stat Compound
+		rAddConstant(10)
+
+_prAdd10Avo:
+	rBSCModifyAvoid // Value is now the "Avoid" part of the Battle Stat Compound
+		rAddConstant(10)
+}
+
+// Hook into Battle Calc Loop
+prBCSkillWANDidntGiveANameYetShrug:
+{
+	rBCWrapper
+		rIf(_prCheckForUnitsWithSkillInRange)
+			rForEachUnitInRange(0, 3) // 1-3 range, default support range
+				rIfUnitsAreAllied
+					rBSCAddUnitsSupportBonuses(1)
+
+_prCheckForUnitsWithSkillInRange:
+	rCallSequence(prNullify _prCheck)
+
+_prCheck:
+	rForEachUnitInRangeTemplate(pTheWanShape)
+		rIfUnitsAreAllied
+			rOr(rCall(/* Check */)) // (rWithConstant(SKILL_SOMETHING, rCall(prCheckUnitHasSkill)))
+}
+
+prAdd2ForEachEnemyInArea:
+	rForEachUnitInRangeTemplate(pTheWanShape)
+		rIfUnitsAreNotAllied
+			rAdd(rConstant(2))
+
+prAddForEachUnitInAreaOfUnitInArea:
+{
+	rForEachUnitInRangeTemplate(pTestShape)
+		rIfUnitHasAttribute(CA_MOUNTEDAID)
+			rAdd
+				rCallSequence(_prConst _prCount)
+
+_prConst:
+	rConstant(10) // N
+
+_prCount:
+	rForEachUnitInRangeTemplate(pTestShape)
+		rAdd(rConstant(1)) // X
+}
+
+pTheWanShape:
+	// Header
+	BYTE 5 5 // Size
+	BYTE 2 2 // Origin (Where the Unit would be)
+
+	// Data
+	BYTE 0 1 1 1 0
+	BYTE 1 0 1 0 1
+	BYTE 1 1 0 1 1
+	BYTE 1 0 1 0 1
+	BYTE 0 1 1 1 0
+	
+	// For good measure
+	ALIGN 4

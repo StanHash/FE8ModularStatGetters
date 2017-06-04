@@ -3,7 +3,7 @@
 
 #include "_Common.event"
 
-pSpdModifiers: // Speed
+pSpeedModifiers: // Speed
 	POIN prAddUnitSpeed prHalveIfRescuing prAddEquipSpeed
 WORD 0
 

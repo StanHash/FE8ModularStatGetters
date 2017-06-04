@@ -1,15 +1,24 @@
 .thumb
 
+.macro get_pair_first rd, rs
+	lsl \rd, \rs, #16 @ clearing second part of pair
+	asr \rd, \rd, #16 @ shifting back
+.endm
+
+.macro get_pair_second rd, rs
+	asr \rd, \rs, #16 @ shifting second part of pair (erasing first part in the process)
+.endm
+
 .macro _blh to, reg=r3
 	ldr \reg, =\to
 	mov lr, \reg
 	.short 0xF800
 .endm
 
-.equ RangeMapFillerRoutine, EALiterals+0x00
-.equ Continue,              EALiterals+0x04
+.equ ClearRange,            EALiterals+0x00
+.equ AddRangeFromRange,     EALiterals+0x04
+.equ Continue,              EALiterals+0x08
 
-.equ FE8U_ClearMap,         0x080197E4
 .equ FE8U_GetUnitStructPtr, 0x08019430
 
 .equ FE8U_MapSizeStruct,    0x0202E4D4
@@ -18,21 +27,24 @@
 
 ForEachUnitInRange:
 	push {r4-r7, lr}
+		
+	@ pushing 0 (to mark the end of the stack allocation)
+	add sp, #-0x04
+	
+	mov r4, #0
+	str r4, [sp]
 	
 	mov r6, r0 @ r6 is current stat
 	mov r7, r1 @ r7 is unit ptr
-	mov r5, r2 @ r5 is range word
+	mov r5, r2 @ r5 is range pair
 	
-	bl ClearRangeMap
+	ldr r3, ClearRange
+	mov lr, r3
+	.short 0xF800
 	
 	@ Unpacking Min-Max ranges (in r2 and r3)
-	mov r1, #0xFF
-	
-	lsr r2, r5, #0
-	and r2, r1 @ r2 = min range
-	
-	lsr r3, r5, #16
-	and r3, r1 @ r3 = max range
+	get_pair_first  r2, r5
+	get_pair_second r3, r5
 	
 	@ r0 = unit x
 	mov r0, #0x10
@@ -42,7 +54,7 @@ ForEachUnitInRange:
 	mov r1, #0x11
 	ldsb r1, [r7, r1]
 	
-	ldr r4, RangeMapFillerRoutine
+	ldr r4, AddRangeFromRange
 	mov lr, r4
 	.short 0xF800
 	
@@ -56,7 +68,7 @@ StartYLoop:
 	sub r5, #1
 	
 	cmp r5, #0
-	blt End @ end y loop
+	blt EndYLoop @ end y loop
 	
 	ldr r0, =FE8U_MapSizeStruct
 	
@@ -98,41 +110,44 @@ StartXLoop:
 	
 	_blh FE8U_GetUnitStructPtr @ get unit struct ptr
 	
-	mov r1, r0 @ subject = other unit
-	mov r2, r7 @ argument = original unit
-	mov r0, r6 @ current stat
+	cmp r0, #0
+	beq StartXLoop
 	
-	bl Continue
-	
-	mov r6, r0 @ store modified stat
-	
+	@ Pushing Unit Struct Pointer
+	add sp, #-0x04
+	str r0, [sp]
+
 	b StartXLoop
-	
-End:
+
+EndYLoop:
+	@ r0 is current stat
 	mov r0, r6
 	
+LoopUnits:
+	ldr r1, [sp]
+	add sp, #0x04
+	
+	cmp r1, #0
+	beq End
+	
+	@ Current Subject is Callee Argument
+	mov r2, r7
+	
+	@ r0 is current stat
+	
+	bl Continue
+	b LoopUnits
+	
+End:
 	pop {r4-r7}
 	
 	pop {r1}
 	bx r1
 
 .ltorg
-
-ClearRangeMap:
-	push {lr}
-	
-	ldr r0, =FE8U_RangeMapRows @ pointer to range map rows
-	ldr r0, [r0]
-	
-	mov r1, #0 @ Clear with 0
-	
-	_blh FE8U_ClearMap
-	
-	pop {pc}
-
-.ltorg
 .align
 
 EALiterals:
+	@ POIN ClearRange
 	@ POIN RangeMapFillerRoutine
 	@ Next

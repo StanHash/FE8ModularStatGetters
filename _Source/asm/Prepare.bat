@@ -1,36 +1,30 @@
 @echo off
 
 rem Generating ModifyBCAttack
-copy "core\ModifyBCStat.s.template" "core\ModifyBCAttack.s"
-fart "core\ModifyBCAttack.s" _STATOFFSET 0x5A
+copy "helpers\battlecalc\BSCModifyStat.s.template" "helpers\battlecalc\BSCModifyAttack.s"
+fart "helpers\battlecalc\BSCModifyAttack.s" _STATOFFSET 0x00
 
 rem Generating ModifyBCDefense
-copy "core\ModifyBCStat.s.template" "core\ModifyBCDefense.s"
-fart "core\ModifyBCDefense.s" _STATOFFSET 0x5C
-
-rem Generating ModifyBCAS
-copy "core\ModifyBCStat.s.template" "core\ModifyBCAS.s"
-fart "core\ModifyBCAS.s" _STATOFFSET 0x5E
+copy "helpers\battlecalc\BSCModifyStat.s.template" "helpers\battlecalc\BSCModifyDefense.s"
+fart "helpers\battlecalc\BSCModifyDefense.s" _STATOFFSET 0x02
 
 rem Generating ModifyBCHit
-copy "core\ModifyBCStat.s.template" "core\ModifyBCHit.s"
-fart "core\ModifyBCHit.s" _STATOFFSET 0x60
+copy "helpers\battlecalc\BSCModifyStat.s.template" "helpers\battlecalc\BSCModifyHit.s"
+fart "helpers\battlecalc\BSCModifyHit.s" _STATOFFSET 0x04
 
 rem Generating ModifyBCAvoid
-copy "core\ModifyBCStat.s.template" "core\ModifyBCAvoid.s"
-fart "core\ModifyBCAvoid.s" _STATOFFSET 0x62
+copy "helpers\battlecalc\BSCModifyStat.s.template" "helpers\battlecalc\BSCModifyAvoid.s"
+fart "helpers\battlecalc\BSCModifyAvoid.s" _STATOFFSET 0x06
 
 rem Generating ModifyBCCrit
-copy "core\ModifyBCStat.s.template" "core\ModifyBCCrit.s"
-fart "core\ModifyBCCrit.s" _STATOFFSET 0x66
+copy "helpers\battlecalc\BSCModifyStat.s.template" "helpers\battlecalc\BSCModifyCrit.s"
+fart "helpers\battlecalc\BSCModifyCrit.s" _STATOFFSET 0x08
 
 rem Generating ModifyBCDodge
-copy "core\ModifyBCStat.s.template" "core\ModifyBCDodge.s"
-fart "core\ModifyBCDodge.s" _STATOFFSET 0x68
+copy "helpers\battlecalc\BSCModifyStat.s.template" "helpers\battlecalc\BSCModifyDodge.s"
+fart "helpers\battlecalc\BSCModifyDodge.s" _STATOFFSET 0x0A
 
-rem Generating ModifyBCLethality
-copy "core\ModifyBCStat.s.template" "core\ModifyBCLethality.s"
-fart "core\ModifyBCLethality.s" _STATOFFSET 0x6C
+rem TODO: ModifyBCAS and ModifyBCLithality
 
 rem Generating ForWord
 copy "helpers\load\template\Word.s.template" "helpers\load\ForWord.s"

@@ -46,7 +46,7 @@ _prAndArgument:
 #define rIfItemHasNotPassiveStatBoosts "rIfNot(prCheckItemHasPassiveStatBoosts)"
 #define rIfItemHasPassiveStatBoosts    "rIf(prCheckItemHasPassiveStatBoosts)"
 
-#define rIfItemHasNotPassiveStatBoosts(arNext) "rIfitemHasNotPassiveStatBoosts; arNext"
+#define rIfItemHasNotPassiveStatBoosts(arNext) "rIfItemHasNotPassiveStatBoosts; arNext"
 #define rIfItemHasPassiveStatBoosts(arNext)    "rIfItemHasPassiveStatBoosts;    arNext"
 
 #define rAddItemPassiveStatBoosts(aStatId) "rForItemROMStruct(rForWordAt(0x0C, rIfSubjectIsNotNull(rAdd(rSByteAt(PASSIVE_ITEM_BOOSTS_OFFSET + aStatId)))))"

@@ -3,7 +3,7 @@
 
 #include "_Common.event"
 
-pSklModifiers: // Skill
+pSkillModifiers: // Skill
 	POIN prAddUnitSkill prHalveIfRescuing prAddEquipSkill
 WORD 0
 

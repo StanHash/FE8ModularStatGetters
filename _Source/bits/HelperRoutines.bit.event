@@ -20,3 +20,6 @@ _prAndMinusOne: // The only way this returns 0 is in the case where Subject is 0
 	rAnd(rMinus(rConstant(1)))
 }
 
+prNullify:
+	rConstant(0)
+

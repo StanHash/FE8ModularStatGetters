@@ -3,7 +3,7 @@
 
 #include "_Common.event"
 
-pLckModifiers: // Luck
+pLuckModifiers: // Luck
 	POIN prAddUnitLuck prAddEquipLuck
 WORD 0
 

@@ -9,6 +9,17 @@ echo:
 
 type bits\FE8VanillaRoutineDefs.bit.event
 
+bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyAttack.bin"    -define "rBSCModifyAttack"
+bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyDefense.bin"   -define "rBSCModifyDefense"
+bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyHit.bin"       -define "rBSCModifyHit"
+bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyAvoid.bin"     -define "rBSCModifyAvoid"
+bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyCrit.bin"      -define "rBSCModifyCrit"
+bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyDodge.bin"     -define "rBSCModifyDodge"
+rem bin2ea --to-stdout -short "asm\helpers\battlecalc\ModifyBCAS.bin"        -define "rBSCModifyAS"
+rem bin2ea --to-stdout -short "asm\helpers\battlecalc\ModifyBCLethality.bin" -define "rBSCModifyLethality"
+echo:
+
+
 bin2ea --to-stdout -short "asm\helpers\Argument.bin"                   -define "rArgument"
 bin2ea --to-stdout -short "asm\helpers\Current.bin"                    -define "rCurrent"
 
@@ -33,8 +44,9 @@ bin2ea --to-stdout -short "asm\helpers\calls\WithResultOfExt.bin"      -define "
 bin2ea --to-stdout -short "asm\helpers\WithSubject.bin"                -define "rWithSubject"
 
 rem Loops
-bin2ea --to-stdout -short "asm\helpers\ForEachUnitInRange.bin"         -define "rForEachUnitInRange(aMinR, aMaxR)"  -before "rWithConstant(aMinR | (aMaxR<<16))"
-bin2ea --to-stdout -short "asm\helpers\ForEachUnitItem.bin"            -define "rForEachUnitItem"
+bin2ea --to-stdout -short "asm\helpers\range\ForEachUnitInRange.bin"         -define "rForEachUnitInRange(aMinR, aMaxR)"   -before "rWithConstant((aMinR | (aMaxR<<16)))" -after "POIN prRangeClear prRangeAddFromRange"
+bin2ea --to-stdout -short "asm\helpers\range\ForEachUnitInRangeTemplate.bin" -define "rForEachUnitInRangeTemplate(apTmpl)" -before "rWithConstant((apTmpl | 0x8000000))"  -after "POIN prRangeClear prRangeAddFromTemplate"
+bin2ea --to-stdout -short "asm\helpers\ForEachUnitItem.bin"                  -define "rForEachUnitItem"
 
 rem Calls
 bin2ea --to-stdout -short "asm\helpers\calls\CallOther.bin"            -define "rCallOther(aprRoutine)"             -after "POIN aprRoutine"
@@ -65,8 +77,12 @@ bin2ea --to-stdout -short "asm\helpers\math\Minus.bin"                 -define "
 bin2ea --to-stdout -short "asm\helpers\math\UpperHalfByteOf.bin"       -define "rUpperHalfByteOf"
 bin2ea --to-stdout -short "asm\helpers\math\LowerHalfByteOf.bin"       -define "rLowerHalfByteOf"
 
+rem BC Stuff
+bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCAddUnitsSupportBonuses.bin" -define "rBSCAddUnitsSupportBonuses(aSupportLevel)" -after "WORD aSupportLevel"
+
 echo:
 
+type bits\HelperConstants.bit.event
 type bits\HelperHelpers.bit.event
 
 call %~dp0bat\PrintEAFooter.bat MSG_HELPER_DEFINITIONS_EVENT
