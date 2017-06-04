@@ -24,7 +24,13 @@ rem Generating ModifyBCDodge
 copy "helpers\battlecalc\BSCModifyStat.s.template" "helpers\battlecalc\BSCModifyDodge.s"
 fart "helpers\battlecalc\BSCModifyDodge.s" _STATOFFSET 0x0A
 
-rem TODO: ModifyBCAS and ModifyBCLithality
+rem Generating ModifyBCAS
+copy "helpers\battlecalc\BSCModifyStat.s.template" "helpers\battlecalc\BSCModifyAS.s"
+fart "helpers\battlecalc\BSCModifyAS.s" _STATOFFSET 0x0C
+
+rem Generating ModifyBCLithality
+copy "helpers\battlecalc\BSCModifyStat.s.template" "helpers\battlecalc\BSCModifyLethality.s"
+fart "helpers\battlecalc\BSCModifyLethality.s" _STATOFFSET 0x0E
 
 rem Generating ForWord
 copy "helpers\load\template\Word.s.template" "helpers\load\ForWord.s"

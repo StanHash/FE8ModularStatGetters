@@ -15,10 +15,9 @@ bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyHit.bin"       -defin
 bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyAvoid.bin"     -define "rBSCModifyAvoid"
 bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyCrit.bin"      -define "rBSCModifyCrit"
 bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyDodge.bin"     -define "rBSCModifyDodge"
-rem bin2ea --to-stdout -short "asm\helpers\battlecalc\ModifyBCAS.bin"        -define "rBSCModifyAS"
-rem bin2ea --to-stdout -short "asm\helpers\battlecalc\ModifyBCLethality.bin" -define "rBSCModifyLethality"
+bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyAS.bin"        -define "rBSCModifyAS"
+bin2ea --to-stdout -short "asm\helpers\battlecalc\BSCModifyLethality.bin" -define "rBSCModifyLethality"
 echo:
-
 
 bin2ea --to-stdout -short "asm\helpers\Argument.bin"                   -define "rArgument"
 bin2ea --to-stdout -short "asm\helpers\Current.bin"                    -define "rCurrent"

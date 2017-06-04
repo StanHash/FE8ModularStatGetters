@@ -4,7 +4,7 @@
 
 WrapForBattleCalc:
 	push {r4, lr}
-	add sp, #-0x0C
+	add sp, #-0x10
 	
 	mov r4, r0 @ Soring Subject For later use
 	
@@ -16,6 +16,7 @@ WrapForBattleCalc:
 	str r3, [sp, #0x00]
 	str r3, [sp, #0x04]
 	str r3, [sp, #0x08]
+	str r3, [sp, #0x0C]
 	
 	mov r0, sp @ BattleStat Compound Ptr is Value
 	
@@ -48,6 +49,16 @@ WrapForBattleCalc:
 		mov r3, #0x68
 		ldrh r3, [r4, r3]
 		strh r3, [r0, #0xA]
+	
+	@ Loading AS
+		mov r3, #0x5E
+		ldrh r3, [r4, r3]
+		strh r3, [r0, #0xC]
+	
+	@ Loading Lethality Chance
+		mov r3, #0x6C
+		ldrh r3, [r4, r3]
+		strh r3, [r0, #0xE]
 	
 	bl Continue
 	
@@ -83,8 +94,18 @@ WrapForBattleCalc:
 		ldrh r1, [r0, #0xA]
 		strh r1, [r4, r3]
 	
+	@ Storing AS
+		mov r3, #0x5E
+		ldrh r1, [r0, #0xC]
+		strh r1, [r4, r3]
+	
+	@ Storing Lethality Chance
+		mov r3, #0x6C
+		ldrh r1, [r0, #0xE]
+		strh r1, [r4, r3]
+	
 	@ End
-	add sp, #+0x0C
+	add sp, #+0x10
 	pop {r4}
 	
 	pop {r1}
