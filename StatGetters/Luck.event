@@ -3,8 +3,8 @@
 
 #include "_Common.event"
 
-pLckModifiers: // Luck
-	POIN prAddUnitLuck prAddEquipLuck prAddTest
+pLuckModifiers: // Luck
+	POIN prAddUnitLuck prAddEquipLuck
 WORD 0
 
 prAddUnitLuck:
@@ -12,26 +12,5 @@ prAddUnitLuck:
 
 prAddEquipLuck:
 	rAdd(rForUnitEquipped(rCallExternal(prGetItemLckBonus)))
-
-MESSAGE CURRENTOFFSET
-prAddTest:
-	rForEachUnitInRangeTemplate(pTestShape)
-		rAdd(rConstant(1))
-
-// Defining Range Shape
-pTestShape:
-	// Header
-	BYTE 5 5 // Size
-	BYTE 2 2 // Origin (Where the Unit would be)
-
-	// Data
-	BYTE 0 1 1 1 0
-	BYTE 1 0 1 0 1
-	BYTE 1 1 0 1 1
-	BYTE 1 0 1 0 1
-	BYTE 0 1 1 1 0
-	
-	// For good measure
-	ALIGN 4
 
 #endif // MODULAR_GETTER_LUCK_EVENT

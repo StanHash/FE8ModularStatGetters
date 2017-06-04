@@ -3,7 +3,7 @@
 
 #include "_Common.event"
 
-pPowModifiers: // Power
+pPowerModifiers: // Power
 	POIN prAddUnitPower prAddEquipPower
 WORD 0
 

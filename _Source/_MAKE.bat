@@ -12,9 +12,6 @@ cd %~dp0asm
 (echo: | (call Prepare.bat)) > nul 2> nul
 echo:
 
-echo: | (call _ClearAllBIN.bat)
-echo:
-
 echo: | (call _AssembleAll.bat)
 echo:
 
@@ -36,6 +33,12 @@ for %%F in (
 	echo Generating "%%F.event"...
 	call %%F.make.bat > "%INSTALL_FOLDER%%%F.event"
 )
+
+cd %~dp0asm
+echo: | (call _ClearAllBIN.bat)
+echo:
+
+cd %~dp0
 
 echo:
 echo Generation Done!

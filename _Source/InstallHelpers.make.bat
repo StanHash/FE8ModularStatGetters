@@ -13,9 +13,10 @@ echo:
 rem Misc Routines
 bin2ea --to-stdout -short "asm\helpers\CapHPIfOverMax.bin"              -label "prCapHPIfOverMax"     -after "POIN (prMaxHPGetter ^ 1)"
 
-rem Range Related Stuff
-bin2ea --to-stdout -short "asm\helpers\range\FillRangeFromRange.bin"    -label "prFillRangeFromRange"
-bin2ea --to-stdout -short "asm\helpers\range\FillRangeFromTemplate.bin" -label "prFillRangeFromTemplate"
+rem Range Lib
+bin2ea --to-stdout -short "asm\librange\ClearRange.bin"                 -label "prRangeClear"
+bin2ea --to-stdout -short "asm\librange\AddRangeFromRange.bin"          -label "prRangeAddFromRange"
+bin2ea --to-stdout -short "asm\librange\AddRangeFromTemplate.bin"       -label "prRangeAddFromTemplate"
 
 rem Checks
 bin2ea --to-stdout -short "asm\helpers\checks\CheckUnitAttribute.bin"   -label "prCheckUnitAttribute"

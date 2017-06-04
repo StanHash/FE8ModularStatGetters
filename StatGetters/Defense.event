@@ -3,7 +3,7 @@
 
 #include "_Common.event"
 
-pDefModifiers: // Defense
+pDefenseModifiers: // Defense
 	POIN prAddUnitDefense prAddEquipDefense
 WORD 0
 

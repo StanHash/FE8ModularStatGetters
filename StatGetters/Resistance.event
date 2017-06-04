@@ -3,7 +3,7 @@
 
 #include "_Common.event"
 
-pResModifiers: // Resistance
+pResistanceModifiers: // Resistance
 	POIN prAddUnitResistance prAddEquipResistance prAddPureWaterBarrierMod
 WORD 0
 

@@ -1,0 +1,86 @@
+// Unit State Flags (Thanks Teq for the Doq)
+#define US_RESCUING     0x00000010
+#define US_RESCUED      0x00000020
+#define US_CANTOING     0x00000040
+#define US_UNDERROOF    0x00000080
+#define US_INBALLISTA   0x00000800
+#define US_DROPLASTITEM 0x00001000
+#define US_GROWTHBONUS  0x00002000
+#define US_TEQ_CAPTURE  0x40000000
+
+// Unit Allegience
+#define UA_BLUE  0x00
+#define UA_GREEN 0x40
+#define UA_RED   0x80
+
+// Unit Struct Offsets (Again, thanks Doq)
+#define UNIT_ROMCHAR    0x00 // Word, pointer
+#define UNIT_ROMCLASS   0x04 // Word, pointer
+#define UNIT_LEVEL      0x08 // UByte
+#define UNIT_EXP        0x09 // UByte
+#define UNIT_INDEX      0x0B // UByte, and to 0x0C to get allegience
+#define UNIT_STATE      0x0C // Word, bitfield
+#define UNIT_POS_X      0x10 // SByte
+#define UNIT_POS_Y      0x11 // SByte
+#define UNIT_MAXHP      0x12 // SByte
+#define UNIT_CURHP      0x13 // SByte
+#define UNIT_POWER      0x14 // SByte
+#define UNIT_SKILL      0x15 // SByte
+#define UNIT_SPEED      0x16 // SByte
+#define UNIT_DEFENSE    0x17 // SByte
+#define UNIT_RESISTANCE 0x18 // SByte
+#define UNIT_LUCK       0x19 // SByte
+#define UNIT_CON_BONUS  0x1A // SByte
+#define UNIT_RESCUEEID  0x1B // UByte, see UNIT_INDEX
+#define UNIT_BALLISTAID 0x1C // UByte
+#define UNIT_MOV_BONUS  0x1D // SByte
+#define UNIT_ITEM1      0x1E // UShort
+#define UNIT_ITEM2      0x20 // UShort
+#define UNIT_ITEM3      0x22 // UShort
+#define UNIT_ITEM4      0x24 // UShort
+#define UNIT_ITEM5      0x26 // UShort
+// etc... Nobody cares for anymore anyway
+
+// Stat Indexes in standard stat arrays
+#define STAT_HP         0x00
+#define STAT_POWER      0x01
+#define STAT_SKILL      0x02
+#define STAT_SPEED      0x03
+#define STAT_DEFENSE    0x04
+#define STAT_RESISTANCE 0x05
+#define STAT_LUCK       0x06
+#define STAT_CON        0x07
+#define STAT_MOV        0x08
+
+// Class/Char Attribute Flags (comes straight from BOOTS)
+#define CA_NONE                  0x00000000
+#define CA_MOUNTEDAID            0x00000001
+#define CA_CANTO                 0x00000002
+#define CA_STEAL                 0x00000004
+#define CA_LOCKPICK              0x00000008
+#define CA_DANCE                 0x00000010
+#define CA_PLAY                  0x00000020
+#define CA_CRITBONUS             0x00000040
+#define CA_BALLISTAE             0x00000080
+#define CA_PROMOTED              0x00000100
+#define CA_SUPPLY                0x00000200
+#define CA_MOUNTED               0x00000400
+#define CA_WYVERN                0x00000800
+#define CA_PEGASUS               0x00001000
+#define CA_LORD                  0x00002000
+#define CA_FEMALE                0x00004000
+#define CA_BOSS                  0x00008000
+#define CA_LOCK_1                0x00010000
+#define CA_LOCK_2                0x00020000
+#define CA_LOCK_3                0x00040000
+#define CA_MAXLEVEL10            0x00080000
+#define CA_UNSELECTABLE          0x00100000
+#define CA_TRIANGLEATTACK_PEGASI 0x00200000
+#define CA_TRIANGLEATTACK_ARMORS 0x00400000
+#define CA_LETHALITY             0x02000000
+#define CA_SUMMON                0x08000000
+#define CA_LOCK_4                0x10000000
+#define CA_LOCK_5                0x20000000
+#define CA_LOCK_6                0x40000000
+#define CA_LOCK_7                0x80000000
+
