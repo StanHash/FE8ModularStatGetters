@@ -1,29 +1,48 @@
 PUSH
 	ORG 0x19190
-		replaceWithHack(prMaxHPGetter)
+	prGotoMaxHPGetter:
+		jumpToHack(prMaxHPGetter)
 
 	ORG 0x19150
-		replaceWithHack(prCurHPGetter)
+	prGotoCurHPGetter:
+		jumpToHack(prCurHPGetter)
 
 	ORG 0x191B0
-		replaceWithHack(prPowGetter)
+	prGotoPowGetter:
+		jumpToHack(prPowGetter)
 
 	ORG 0x191D0
-		replaceWithHack(prSklGetter)
+	prGotoSklGetter:
+		jumpToHack(prSklGetter)
 
 	ORG 0x19210
-		replaceWithHack(prSpdGetter)
+	prGotoSpdGetter:
+		jumpToHack(prSpdGetter)
 
 	ORG 0x19250
-		replaceWithHack(prDefGetter)
+	prGotoDefGetter:
+		jumpToHack(prDefGetter)
 
 	ORG 0x19270
-		replaceWithHack(prResGetter)
+	prGotoResGetter:
+		jumpToHack(prResGetter)
 
 	ORG 0x19298
-		replaceWithHack(prLckGetter)
+	prGotoLckGetter:
+		jumpToHack(prLckGetter)
 
 	ORG 0x189B8
-		replaceWithHack(prAidGetter)
+	prGotoAidGetter:
+		jumpToHack(prAidGetter)
+	
+	// Replaces part of old spd getter
+	ORG 0x19224
+	prGotoMovGetter:
+		jumpToHack(prMovGetter)
+	
+	// Replaces part of old res getter
+	ORG 0x19284
+	prGotoConGetter:
+		jumpToHack(prConGetter)
 POP
 

@@ -8,8 +8,16 @@ CheckUnitStatus:
 	mov r3, #0xF
 	and r0, r3
 	
-	@ r0 = 0 only if status == r2
-	sub r0, r2
+	cmp r0, r2
+	bne ReturnFalse
+	
+	mov r0, #42
+	b End
+	
+ReturnFalse:
+	mov r0, #0
+	
+End:
 	bx lr
 
 .ltorg

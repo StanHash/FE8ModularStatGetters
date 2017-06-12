@@ -3,18 +3,6 @@
 
 // Defining Free Space
 #define FreeSpace        0xB2B000
-#define FreeSpaceBLRange 0x1C1EC0
-
-PUSH; ORG FreeSpaceBLRange
-	#define inBLRange
-	
-	// Installing MSG components that are needed to be in BL Range
-	
-	ALIGN 4
-	#include "MSG/InstallCore_BLRange.event"
-
-	#undef inBLRange
-POP
 
 PUSH; ORG FreeSpace
 	ALIGN 4

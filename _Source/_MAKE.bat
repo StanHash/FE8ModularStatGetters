@@ -25,7 +25,6 @@ cd %~dp0
 for %%F in (
 	CoreDefinitions
 	InstallCore
-	InstallCore_BLRange
 	
 	HelperDefinitions
 	InstallHelpers

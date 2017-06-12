@@ -7,6 +7,10 @@ type bits\FE8Check.bit.event
 echo #include "CoreDefinitions.event"
 echo:
 
+echo #include "3rdParty/InjectMovGetters.event"
+echo #include "3rdParty/InjectConGetters.event"
+echo:
+
 type bits\InjectGetters.bit.event
 
 echo ALIGN 4
