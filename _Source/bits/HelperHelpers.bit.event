@@ -69,6 +69,9 @@
 #define rForUnitEquipped         "rForResultOfExt(prGetUnitEquipped)"
 #define rForUnitEquipped(arNext) "rForResultOfExt(prGetUnitEquipped); arNext"
 
+#define rForActiveUnit         "rForConstant(0x03004E50); rForWordAt(0)"
+#define rForActiveUnit(arNext) "rForActiveUnit; arNext"
+
 #define rForItemROMStruct         "rForResultOfExt(prGetItemROMStruct)"
 #define rForItemROMStruct(arNext) "rForResultOfExt(prGetItemROMStruct); arNext"
 
