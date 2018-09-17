@@ -46,7 +46,7 @@ PUSH
 
 	ORG $019228 // Inside the old Speed getter
 	GetUnitMov = CURRENTOFFSET+1
-		MG_ModularGetter(gConModifiers)
+		MG_ModularGetter(gMovModifiers)
 
 POP
 
