@@ -1,0 +1,12 @@
+#ifndef MSG3_CORE
+#define MSG3_CORE
+
+#define MG_ModularGetter(aModifierList) "$$core/ModularGetter.dmp(w); POIN CallSequence (aModifierList)"
+#define MG_WrappedGetter "$$core/WrappedGetter.dmp(w)"
+
+ALIGN 4
+
+CallSequence = CURRENTOFFSET+1
+	$$core/CallSequence.dmp(w)
+
+#endif // MSG3_CORE

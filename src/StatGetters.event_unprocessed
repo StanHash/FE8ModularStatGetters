@@ -1,0 +1,61 @@
+#ifndef MSG3_STATGETTERS
+#define MSG3_STATGETTERS
+
+#include "Core.event"
+
+PUSH
+	ORG $019190
+	GetUnitMaxHp = CURRENTOFFSET+1
+		MG_ModularGetter(gMaxHpModifiers)
+
+	ORG $019150
+	GetUnitCurHp = CURRENTOFFSET+1;
+		MG_ModularGetter(gCurHpModifiers)
+
+	ORG $0191B0
+	GetUnitPower = CURRENTOFFSET+1
+		MG_ModularGetter(gPowerModifiers)
+
+	ORG $0191D0
+	GetUnitSkill = CURRENTOFFSET+1
+		MG_ModularGetter(gSkillModifiers)
+
+	ORG $019210
+	GetUnitSpeed = CURRENTOFFSET+1
+		MG_ModularGetter(gSpeedModifiers)
+
+	ORG $019250
+	GetUnitDefense = CURRENTOFFSET+1
+		MG_ModularGetter(gDefenseModifiers)
+
+	ORG $019270
+	GetUnitResistance = CURRENTOFFSET+1
+		MG_ModularGetter(gResistanceModifiers)
+
+	ORG $019298
+	GetUnitLuck = CURRENTOFFSET+1
+		MG_ModularGetter(gLuckModifiers)
+
+	ORG $0189B8
+	GetUnitAid = CURRENTOFFSET+1
+		MG_ModularGetter(gAidModifiers)
+
+	ORG $0191E8 // Inside the old Skill getter
+	GetUnitCon = CURRENTOFFSET+1
+		MG_ModularGetter(gConModifiers)
+
+	ORG $019228 // Inside the old Speed getter
+	GetUnitMov = CURRENTOFFSET+1
+		MG_ModularGetter(gConModifiers)
+
+	ORG $019168 // Inside the old Current Hp getter
+	GetUnitSSMov = CURRENTOFFSET+1
+		$$getters/GetMovSS.dmp(w)
+		POIN GetUnitMov
+
+POP
+
+#include "3rdParty/InjectConGetters.event"
+#include "3rdParty/InjectMovGetters.event"
+
+#endif // MSG3_STATGETTERS
