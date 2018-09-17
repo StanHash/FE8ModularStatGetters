@@ -8,8 +8,8 @@ StatScreenMovGetterWrapper:
 	ldr r0, [r5, #0xC]
 	mov r4, r0
 
-	ldr r3, lpMovGetter
-	bl  BXR3
+	ldr r1, lpMovGetter
+	bl  BXR1
 
 	cmp r0, #0
 	bne NonZeroMov
@@ -30,9 +30,9 @@ NonZeroMov:
 End:
 	pop {r4}
 
-	pop {r3}
-BXR3:
-	bx r3
+	pop {r1}
+BXR1:
+	bx r1
 
 .ltorg
 .align
