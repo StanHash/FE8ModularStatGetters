@@ -1,6 +1,6 @@
 .thumb
 
-lMovGetter = EALiterals + 0x00
+lpMovGetter = EALiterals + 0x00
 
 StatScreenMovGetterWrapper:
 	push {r4, lr}
@@ -8,7 +8,8 @@ StatScreenMovGetterWrapper:
 	ldr r0, [r5, #0xC]
 	mov r4, r0
 
-	bl lMovGetter
+	ldr r3, lpMovGetter
+	bl  BXR3
 
 	cmp r0, #0
 	bne NonZeroMov
@@ -27,7 +28,11 @@ NonZeroMov:
 	ldsb r3, [r3, r1]
 
 End:
-	pop {r4, pc}
+	pop {r4}
+
+	pop {r3}
+BXR3:
+	bx r3
 
 .ltorg
 .align

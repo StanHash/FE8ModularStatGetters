@@ -48,12 +48,11 @@ PUSH
 	GetUnitMov = CURRENTOFFSET+1
 		MG_ModularGetter(gConModifiers)
 
-	ORG $019168 // Inside the old Current Hp getter
-	GetUnitSSMov = CURRENTOFFSET+1
-		$$getters/GetMovSS.dmp(w)
-		POIN GetUnitMov
-
 POP
+
+GetUnitSSMov = CURRENTOFFSET+1
+	$$getters/GetMovSS.dmp(w)
+	POIN GetUnitMov
 
 #include "3rdParty/InjectConGetters.event"
 #include "3rdParty/InjectMovGetters.event"
